@@ -11,7 +11,7 @@ jobs:
       total_score: 100
 
     steps:
-    - name: Klonlama
+    - name: Checkout
       uses: actions/checkout@v2
 
     - name: apt updte & installs
