@@ -22,7 +22,7 @@ jobs:
 
     - name: Test Fonction nb 1
       run: |
-        gcc -o my_strcat -Wall -Wextra -Werror -std=c99 -pedantic -Wvla my_strcat.c &> compiling.txt
+        gcc -Wall -Wextra -Werror -std=c99 -pedantic -Wvla -O1 -o main *.c &> compiling.txt
         #if [ $(./fonksiyon | grep "10 + 2 = 12" | wc -l) -eq 1 ]; then echo "Toplama fonksiyonu testi geçti."; else echo "Toplama fonksiyonu testi başarısız oldu."; fi
         #echo "${GITHUB_ACTOR} Toplama Fonksiyonu: 25" >> not.txt
 
