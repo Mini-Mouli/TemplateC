@@ -1,0 +1,12 @@
+name: dotnet package
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Mini-Mouli/xUnitAction@B2-TP3
+        with :
+          tests_token : ${{ secrets.TOKEN_XUNITTESTS }}
+          default_token : ${{ secrets.GITHUB_TOKEN }}
