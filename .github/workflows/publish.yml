@@ -19,7 +19,7 @@ jobs:
 
     - name: Test Fonction nb 1
       run: |
-        gcc -o test -Wall -Wextra -Werror -std=c99 -pedantic -Wvla test.c
+        gcc -o test -Wall -Wextra -Werror -std=c99 -pedantic -Wvla test.c >> compiling.txt
         if [ $(./fonksiyon | grep "10 + 2 = 12" | wc -l) -eq 1 ]; then echo "Toplama fonksiyonu testi geçti."; else echo "Toplama fonksiyonu testi başarısız oldu."; fi
         echo "${GITHUB_ACTOR} Toplama Fonksiyonu: 25" >> not.txt
 
@@ -32,9 +32,15 @@ jobs:
         done < not.txt
         export total_score
         echo "${GITHUB_ACTOR} puanınız: $total_score" >> not.txt
+    - name: upload compile
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-compile
+        path: compiling.txt 
 
     - name: upload results
       uses: actions/upload-artifact@v4
       with:
-        name: test-eu
+        name: test-suite
         path: not.txt
